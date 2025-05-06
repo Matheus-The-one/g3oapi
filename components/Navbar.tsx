@@ -115,17 +115,13 @@ export function Navbar() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/pricing" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Pricing
-                </NavigationMenuLink>
+              <Link href="/pricing" passHref>
+                <p>Pricing</p>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/docs" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Documentation
-                </NavigationMenuLink>
+              <Link href="/docs" passHref>
+                <p>Documentation</p>
               </Link>
             </NavigationMenuItem>
           </NavigationMenuList>

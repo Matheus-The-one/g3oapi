@@ -30,12 +30,8 @@ export function Hero() {
           </div>
 
           {/* Feature highlights */}
-
-          
         </div>
       </div>
     </div>
   );
 }
-
-
