@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 
 const apiServices: { title: string; href: string; description: string }[] = [
   {
@@ -128,7 +128,7 @@ export function Navbar() {
         </NavigationMenu>
       </div>
       {/* Mobile Navigation - Only shows the burger menu button */}
-      <div className="md:hidden p-0 justify-end">
+      <div className="md:hidden p-4 justify-end ">
         <Sheet>
           <SheetTrigger asChild>
             <Button className="justify-end" variant="ghost" size="icon">
@@ -137,6 +137,7 @@ export function Navbar() {
             </Button>
           </SheetTrigger>
           <SheetContent side="right">
+            <SheetTitle className="text-left hidden">Menu</SheetTitle>
             <nav className="flex flex-col gap-4 mt-8">
               <Link href="/" className="text-lg font-semibold">
                 Home
