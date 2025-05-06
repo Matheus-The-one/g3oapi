@@ -11,11 +11,15 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 
 const apiServices: { title: string; href: string; description: string }[] = [
   {
@@ -190,7 +194,7 @@ export function Navbar() {
                       key={service.title}
                       href={service.href}
                       className="block text-sm hover:underline"
-                      legacyBehavior>
+                    >
                       {service.title}
                     </Link>
                   ))}
