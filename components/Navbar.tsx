@@ -12,7 +12,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Menu, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown, Image, Scissors, Bot, Film } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -21,96 +21,77 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 
-const apiServices: { title: string; href: string; description: string }[] = [
+const apiServices: {
+  title: string;
+  href: string;
+  description: string;
+  icon: React.ElementType;
+  isUnderDevelopment?: boolean;
+}[] = [
   {
-    title: "Payment API",
-    href: "/services/payment-api",
+    title: "AI Image Generation",
+    href: "/services/ai-image-generation",
     description:
-      "Secure payment processing API for startups to handle transactions efficiently.",
+      "Generate stunning images from text prompts using advanced AI models.",
+    icon: Image,
   },
   {
-    title: "Authentication",
-    href: "/services/authentication-api",
+    title: "Background Removal AI",
+    href: "/services/background-removal",
     description:
-      "User authentication and authorization APIs for secure access management.",
+      "Remove backgrounds from images instantly with AI-powered precision.",
+    icon: Scissors,
   },
   {
-    title: "Data Storage",
-    href: "/services/data-storage",
-    description:
-      "Scalable data storage solutions for growing startups with flexible pricing.",
+    title: "Rotten Tomato API",
+    href: "/services/rotten-tomato",
+    description: "Access comprehensive movie data, ratings, and reviews.",
+    icon: Film,
   },
   {
-    title: "Analytics API",
-    href: "/services/analytics",
-    description:
-      "Track user behavior and performance metrics with our analytics API.",
-  },
-  {
-    title: "Integration Hub",
-    href: "/services/integration-hub",
-    description:
-      "Connect your applications with third-party services through our integration APIs.",
-  },
-  {
-    title: "AI Services",
-    href: "/services/ai-services",
-    description:
-      "Access machine learning and AI capabilities through simple API endpoints.",
+    title: "Meet Bot API",
+    href: "/services/meet-bot",
+    description: "Intelligent meeting assistant and automation bot.",
+    icon: Bot,
+    isUnderDevelopment: true,
   },
 ];
 
 export function Navbar() {
-  const [isServicesVisible, setIsServicesVisible] = useState(false);
   const [isApiProductsVisible, setIsApiProductsVisible] = useState(false);
+
   return (
     <>
-      {/* Desktop Navigation - Only visible on md and larger screens */}
+      {/* Desktop Navigation */}
       <div className="hidden md:block">
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+              <NavigationMenuTrigger>APIs</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                  <li className="row-span-3">
+                <ul className="grid gap-2 p-3 w-[320px] lg:w-[380px]">
+                  <li className="mb-2">
                     <NavigationMenuLink asChild>
                       <a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-muted p-6 no-underline outline-none focus:shadow-md"
+                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-muted p-4 no-underline outline-none focus:shadow-md"
                         href="/"
                       >
-                        <div className="mb-2 mt-4 text-lg font-medium">
-                          g3o api
+                        <div className="mb-1 text-base font-medium">
+                          g3o API
                         </div>
-                        <p className="text-sm leading-tight text-muted-foreground">
-                          Powerful, reliable APIs for startups and funded
-                          projects.
+                        <p className="text-xs leading-tight text-muted-foreground">
+                          AI APIs live on RapidAPI
                         </p>
                       </a>
                     </NavigationMenuLink>
                   </li>
-                  <ListItem href="/pricing" title="Pricing">
-                    Flexible pricing plans designed for startups at every stage.
-                  </ListItem>
-                  <ListItem href="/docs" title="Documentation">
-                    Comprehensive guides to integrate our APIs into your
-                    projects.
-                  </ListItem>
-                  <ListItem href="/support" title="Support">
-                    24/7 developer support to help you succeed.
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>API Products</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                   {apiServices.map((service) => (
                     <ListItem
                       key={service.title}
                       title={service.title}
                       href={service.href}
+                      icon={service.icon}
+                      isUnderDevelopment={service.isUnderDevelopment}
                     >
                       {service.description}
                     </ListItem>
@@ -120,23 +101,21 @@ export function Navbar() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/pricing" passHref>
-                <p>Pricing</p>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/docs" passHref>
-                <p>Documentation</p>
+                <p className="text-sm font-medium hover:text-primary transition-colors">
+                  Pricing
+                </p>
               </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-      {/* Mobile Navigation - Only shows the burger menu button */}
-      <div className="md:hidden p-4 justify-end ">
+
+      {/* Mobile Navigation */}
+      <div className="md:hidden p-4 justify-end">
         <Sheet>
           <SheetTrigger asChild>
             <Button className="justify-end" variant="ghost" size="icon">
-              <Menu className="j h-5 w-5" />
+              <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
@@ -146,41 +125,12 @@ export function Navbar() {
               <Link href="/" className="text-lg font-semibold">
                 Home
               </Link>
-              <button
-                onClick={() => setIsServicesVisible(!isServicesVisible)}
-                className="flex items-center justify-between w-full text-lg font-semibold text-left"
-              >
-                <span>Services</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform ${
-                    isServicesVisible ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              {isServicesVisible && (
-                <div className="pl-4 space-y-3 mt-2">
-                  <Link
-                    href="/pricing"
-                    className="block text-sm hover:underline"
-                  >
-                    Pricing
-                  </Link>
-                  <Link href="/docs" className="block text-sm hover:underline">
-                    Documentation
-                  </Link>
-                  <Link
-                    href="/support"
-                    className="block text-sm hover:underline"
-                  >
-                    Support
-                  </Link>
-                </div>
-              )}
+
               <button
                 onClick={() => setIsApiProductsVisible(!isApiProductsVisible)}
-                className="flex items-center justify-between w-full text-lg font-semibold text-left mt-2"
+                className="flex items-center justify-between w-full text-lg font-semibold text-left"
               >
-                <span>API Products</span>
+                <span>APIs</span>
                 <ChevronDown
                   className={`h-4 w-4 transition-transform ${
                     isApiProductsVisible ? "rotate-180" : ""
@@ -193,13 +143,26 @@ export function Navbar() {
                     <Link
                       key={service.title}
                       href={service.href}
-                      className="block text-sm hover:underline"
+                      className={`block text-sm hover:underline ${
+                        service.isUnderDevelopment
+                          ? "underline decoration-dashed"
+                          : ""
+                      }`}
                     >
                       {service.title}
+                      {service.isUnderDevelopment && (
+                        <span className="ml-1 text-xs text-muted-foreground">
+                          (Coming Soon)
+                        </span>
+                      )}
                     </Link>
                   ))}
                 </div>
               )}
+
+              <Link href="/pricing" className="text-lg font-semibold">
+                Pricing
+              </Link>
             </nav>
           </SheetContent>
         </Sheet>
@@ -210,26 +173,48 @@ export function Navbar() {
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
+  React.ComponentPropsWithoutRef<"a"> & {
+    icon?: React.ElementType;
+    isUnderDevelopment?: boolean;
+  }
+>(
+  (
+    { className, title, children, icon: Icon, isUnderDevelopment, ...props },
+    ref
+  ) => {
+    return (
+      <li>
+        <NavigationMenuLink asChild>
+          <a
+            ref={ref}
+            className={cn(
+              "block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              className
+            )}
+            {...props}
+          >
+            <div className="flex items-center space-x-2">
+              {Icon && <Icon className="h-3 w-3 text-primary" />}
+              <div
+                className={`text-xs font-medium leading-none ${
+                  isUnderDevelopment ? "underline decoration-dashed" : ""
+                }`}
+              >
+                {title}
+                {isUnderDevelopment && (
+                  <span className="ml-1 text-xs text-muted-foreground">
+                    (Soon)
+                  </span>
+                )}
+              </div>
+            </div>
+            <p className="line-clamp-2 text-xs leading-snug text-muted-foreground mt-1">
+              {children}
+            </p>
+          </a>
+        </NavigationMenuLink>
+      </li>
+    );
+  }
+);
 ListItem.displayName = "ListItem";
