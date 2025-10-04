@@ -12,7 +12,17 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Menu, ChevronDown, Image, Scissors, Bot, Film } from "lucide-react";
+import {
+  Menu,
+  ChevronDown,
+  Image,
+  Scissors,
+  ShoppingBag,
+  Stethoscope,
+  TrendingUp,
+  ChefHat,
+  Film,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -29,31 +39,34 @@ const apiServices: {
   isUnderDevelopment?: boolean;
 }[] = [
   {
-    title: "AI Image Generation",
-    href: "/services/ai-image-generation",
-    description:
-      "Generate stunning images from text prompts using advanced AI models.",
-    icon: Image,
-  },
-  {
-    title: "Background Removal AI",
-    href: "/services/background-removal",
-    description:
-      "Remove backgrounds from images instantly with AI-powered precision.",
-    icon: Scissors,
-  },
-  {
     title: "Rotten Tomato API",
     href: "/services/rotten-tomato",
     description: "Access comprehensive movie data, ratings, and reviews.",
     icon: Film,
   },
   {
-    title: "Meet Bot API",
-    href: "/services/meet-bot",
-    description: "Intelligent meeting assistant and automation bot.",
-    icon: Bot,
-    isUnderDevelopment: true,
+    title: "Nike API",
+    href: "/services/nike-api",
+    description: "Access Nike products, inventory, and e-commerce data.",
+    icon: ShoppingBag,
+  },
+  {
+    title: "Doctors API",
+    href: "/services/doctors-api",
+    description: "Find doctors, medical professionals, and healthcare data.",
+    icon: Stethoscope,
+  },
+  {
+    title: "Investors Leads API",
+    href: "/services/investors-leads-api",
+    description: "Access investor contact emails and business leads data.",
+    icon: TrendingUp,
+  },
+  {
+    title: "Cookpad API",
+    href: "/services/cookpad-api",
+    description: "Access recipes, cooking data, and food information.",
+    icon: ChefHat,
   },
 ];
 
