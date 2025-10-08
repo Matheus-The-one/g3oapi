@@ -85,17 +85,17 @@ export function Navbar() {
                 <ul className="grid gap-2 p-3 w-[320px] lg:w-[380px]">
                   <li className="mb-2">
                     <NavigationMenuLink asChild>
-                      <a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-muted p-4 no-underline outline-none focus:shadow-md"
-                        href="/"
+                      <Link
+                        href="/services"
+                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-br from-primary/10 to-primary/5 p-4 no-underline outline-none focus:shadow-md hover:from-primary/20 hover:to-primary/10 transition-colors"
                       >
                         <div className="mb-1 text-base font-medium">
-                          g3o API
+                          g3o API Services
                         </div>
                         <p className="text-xs leading-tight text-muted-foreground">
-                          AI APIs live on RapidAPI
+                          View all our APIs on RapidAPI →
                         </p>
-                      </a>
+                      </Link>
                     </NavigationMenuLink>
                   </li>
                   {apiServices.map((service) => (
@@ -152,6 +152,12 @@ export function Navbar() {
               </button>
               {isApiProductsVisible && (
                 <div className="pl-4 space-y-3 mt-2">
+                  <Link
+                    href="/services"
+                    className="block text-sm font-semibold text-primary hover:underline"
+                  >
+                    View All Services →
+                  </Link>
                   {apiServices.map((service) => (
                     <Link
                       key={service.title}

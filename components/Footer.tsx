@@ -3,6 +3,18 @@
 import { Github, Mail } from "lucide-react";
 
 const footerLinks = {
+  "API Services": [
+    { name: "All Services", href: "/services" },
+    { name: "Nike API", href: "/services/nike-api" },
+    { name: "Cookpad API", href: "/services/cookpad-api" },
+    { name: "Doctors API", href: "/services/doctors-api" },
+    { name: "Investors Leads API", href: "/services/investors-leads-api" },
+  ],
+  Company: [
+    { name: "About", href: "/about" },
+    { name: "Pricing", href: "/pricing" },
+    { name: "Contact", href: "mailto:contact@g3oapi.com" },
+  ],
   Legal: [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
@@ -18,9 +30,9 @@ export function Footer() {
   return (
     <footer className="border-t border-border/50 bg-background">
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand section */}
-          <div className="col-span-1 md:col-span-1 lg:col-span-2">
+          <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="font-bold text-2xl">g3o API</div>
             </div>
